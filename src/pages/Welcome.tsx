@@ -30,7 +30,7 @@ const Welcome = () => {
     };
 
     const fadeOut = () => {
-            opacity.value = withTiming(0, { duration: 250 });
+        opacity.value = withTiming(0, { duration: 250 });
     };
 
     const fadeAnimatedStyle = useAnimatedStyle(() => ({
@@ -104,9 +104,15 @@ const Welcome = () => {
                     >
                         <Text className={`text-white font-bold ${theme.tx_2}`}>Next</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="w-11/12 h-11 rounded-lg justify-center items-center">
-                        <Text className={`text-black font-bold opacity-40 ${theme.tx_1}`}>Skip</Text>
-                    </TouchableOpacity>
+                    {
+                        slide != images.length-1 ? (
+                            <TouchableOpacity className="w-11/12 h-11 rounded-lg justify-center items-center">
+                                <Text className={`text-black font-bold opacity-40 ${theme.tx_1}`}>Skip</Text>
+                            </TouchableOpacity>
+                        ):(
+                            <View className={`w-11/12 h-11 rounded-lg justify-center items-center`}></View>
+                        )
+                    }
                 </View>
             </View>
         </View>
