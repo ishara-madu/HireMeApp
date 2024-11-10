@@ -63,14 +63,14 @@ const Welcome = () => {
             <TouchableOpacity
                 key={index}
                 onPress={() => { click(index) }}
-                className={`${slide === index ? `w-10 h-2 ${theme.bg_green_100}` : `w-2 h-2 ${theme.bg_green_20}`} rounded-full`}
+                className={`${slide === index ? `w-10 h-2 ${theme.bg_1}` : `w-2 h-2 ${theme.bg_2}`} rounded-full`}
             />
         ))
     );
 
     return (
-        <View className={`${theme.bg_white_20} flex-1 items-center`}>
-            <View className={`${theme.bg_green_20} h-[55%] w-full`}>
+        <View className={`${theme.bg_3} flex-1 items-center`}>
+            <View className={`${theme.bg_2} h-[55%] w-full`}>
                 {!hideSlides && (
                     <Animated.Image
                         style={animatedStyle}
@@ -95,7 +95,7 @@ const Welcome = () => {
 
                 <View className="w-full flex items-center">
                     <TouchableOpacity
-                        className={`${theme.bg_green_100} w-11/12 h-11 rounded-lg justify-center items-center`}
+                        className={`${theme.bg_1} w-11/12 h-11 rounded-lg justify-center items-center`}
                         onPress={() => {
                             click();
                             fadeOut();

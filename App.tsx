@@ -14,8 +14,8 @@ export default function App() {
       <ThemeProvider>
       <StatusBar style="light" backgroundColor='#22826a' />
         {/* <SignUp/> */}
-        {/* <Auth /> */}
-        <Welcome/>
+        <Auth />
+        {/* <Welcome/> */}
       </ThemeProvider>
       </SafeAreaView>
   );
