@@ -8,6 +8,7 @@ const Welcome = () => {
     const [hideSlides, setHideSlides] = useState(false);
     const { theme } = useTheme();
     const translateX = useSharedValue(0);
+    const opacity = useSharedValue(1);
 
     const titles = ['Welcome to Hire Me', 'Find the Best Employee', 'Sell Your Knowledge'];
     const descriptions = [
@@ -21,32 +22,47 @@ const Welcome = () => {
         require('../../assets/welcome-3.png')
     ];
 
-    const click = (index?:any) => {
+
+    const fadeIn = () => {
+        setTimeout(() => {
+            opacity.value = withTiming(1, { duration: 500 });
+        }, 500);
+    };
+
+    const fadeOut = () => {
+            opacity.value = withTiming(0, { duration: 250 });
+    };
+
+    const fadeAnimatedStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value,
+    }));
+
+    const click = (index?: any) => {
         translateX.value = -800;
         setTimeout(() => {
             translateX.value = 800;
             setHideSlides(true);
-        }, 300);
+        }, 200);
         setTimeout(() => {
             translateX.value = 0;
-            if(index != undefined){
+            if (index != undefined) {
                 setSlide(index)
-            }else{
+            } else {
                 setSlide((prev) => (prev + 1) % titles.length)
             }
             setHideSlides(false);
-        }, 800);
+        }, 500);
     };
 
     const animatedStyle = useAnimatedStyle(() => ({
-        transform: [{ translateX: withTiming(translateX.value, { duration: 800 }) }],
+        transform: [{ translateX: withTiming(translateX.value, { duration: 500 }) }],
     }));
 
     const renderDots = () => (
         titles.map((_, index) => (
             <TouchableOpacity
                 key={index}
-                onPress={() => {click(index)}}
+                onPress={() => { click(index) }}
                 className={`${slide === index ? `w-10 h-2 ${theme.bg_green_100}` : `w-2 h-2 ${theme.bg_green_20}`} rounded-full`}
             />
         ))
@@ -68,19 +84,22 @@ const Welcome = () => {
                 <View className="flex items-center w-full mt-3 flex-row justify-center gap-x-3">
                     {renderDots()}
                 </View>
-                <View className="flex w-11/12 items-center">
+                <Animated.View style={fadeAnimatedStyle} className="flex w-11/12 items-center">
                     <Text className={`font-bold text-base text-center ${theme.tx_1}`}>
                         {titles[slide]}
                     </Text>
                     <Text className={`text-xs opacity-40 text-center ${theme.tx_1}`}>
                         {descriptions[slide]}
                     </Text>
-                </View>
+                </Animated.View>
+
                 <View className="w-full flex items-center">
                     <TouchableOpacity
                         className={`${theme.bg_green_100} w-11/12 h-11 rounded-lg justify-center items-center`}
-                        onPress={()=>{
+                        onPress={() => {
                             click();
+                            fadeOut();
+                            fadeIn();
                         }}
                     >
                         <Text className={`text-white font-bold ${theme.tx_2}`}>Next</Text>
