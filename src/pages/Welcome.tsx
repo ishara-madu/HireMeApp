@@ -1,49 +1,97 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const Welcome = () => {
-    const [slide, setSlide] = React.useState(0)
+    const [slide, setSlide] = useState(0);
+    const [hideSlides, setHideSlides] = useState(false);
+    const { theme } = useTheme();
+    const translateX = useSharedValue(0);
+
     const titles = ['Welcome to Hire Me', 'Find the Best Employee', 'Sell Your Knowledge'];
-    const descriptions = ["Your go-to platform for hiring the best talent quickly and easily. Explore a variety of options to find the right employee for your needs.", "Discover a wide range of skilled professionals who are ready to help you grow your business. From developers to designers, we have the perfect candidates for every role.", "Share your expertise and earn by offering your skills to those who need them. Whether you're a consultant, freelancer, or expert in your field, start making an impact and income."];
-    const images = [require('../../assets/welcome-1.png'), require('../../assets/welcome-2.png'),require('../../assets/welcome-3.png')];
+    const descriptions = [
+        "Your go-to platform for hiring the best talent quickly and easily. Explore a variety of options to find the right employee for your needs.",
+        "Discover a wide range of skilled professionals ready to help you grow your business. From developers to designers, we have the perfect candidates for every role.",
+        "Share your expertise and earn by offering your skills to those who need them. Whether you're a consultant, freelancer, or expert in your field, start making an impact and income."
+    ];
+    const images = [
+        require('../../assets/welcome-1.png'),
+        require('../../assets/welcome-2.png'),
+        require('../../assets/welcome-3.png')
+    ];
+
+    const click = (index?:any) => {
+        translateX.value = -800;
+        setTimeout(() => {
+            translateX.value = 800;
+            setHideSlides(true);
+        }, 300);
+        setTimeout(() => {
+            translateX.value = 0;
+            if(index != undefined){
+                setSlide(index)
+            }else{
+                setSlide((prev) => (prev + 1) % titles.length)
+            }
+            setHideSlides(false);
+        }, 800);
+    };
+
+    const animatedStyle = useAnimatedStyle(() => ({
+        transform: [{ translateX: withTiming(translateX.value, { duration: 800 }) }],
+    }));
+
+    const renderDots = () => (
+        titles.map((_, index) => (
+            <TouchableOpacity
+                key={index}
+                onPress={() => {click(index)}}
+                className={`${slide === index ? `w-10 h-2 ${theme.bg_green_100}` : `w-2 h-2 ${theme.bg_green_20}`} rounded-full`}
+            />
+        ))
+    );
+
     return (
-        <View className={`bg-[#e6edeb] flex-1 items-center`}>
-            <View className={`bg-[#a6cac1] h-[55%] w-full`}>
-                <Image
-                    source={(images[slide])}
-                    resizeMode='contain'
-                    className="flex items-center justify-center w-full h-full"
-                />
+        <View className={`${theme.bg_white_20} flex-1 items-center`}>
+            <View className={`${theme.bg_green_20} h-[55%] w-full`}>
+                {!hideSlides && (
+                    <Animated.Image
+                        style={animatedStyle}
+                        source={images[slide]}
+                        resizeMode='contain'
+                        className="flex items-center justify-center w-full h-full"
+                    />
+                )}
             </View>
-            <View className={`flex-1 items-center justify-between w-full`}>
-                <View className={`flex items-center w-full mt-3 flex-row justify-center gap-x-2`}>
-                    <TouchableOpacity onPress={()=>{setSlide(0)}} className={`${slide === 0 ? 'w-10 h-2 bg-[#22826a]':'w-2 h-2 bg-[#a6cac1]'} rounded-full`}></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{setSlide(1)}} className={`${slide === 1 ? 'w-10 h-2 bg-[#22826a]':'w-2 h-2 bg-[#a6cac1]'} rounded-full`}></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{setSlide(2)}} className={`${slide === 2 ? 'w-10 h-2 bg-[#22826a]':'w-2 h-2 bg-[#a6cac1]'} rounded-full`}></TouchableOpacity>
+            <View className="flex-1 items-center justify-between w-full">
+                <View className="flex items-center w-full mt-3 flex-row justify-center gap-x-3">
+                    {renderDots()}
                 </View>
-                <View className={`flex w-full items-center`}>
-                    <Text className={`font-bold text-base text-center`}>{titles[slide]}</Text>
-                    <Text className={`text-xs opacity-40 text-center`}>{descriptions[slide]}</Text>
+                <View className="flex w-11/12 items-center">
+                    <Text className={`font-bold text-base text-center ${theme.tx_1}`}>
+                        {titles[slide]}
+                    </Text>
+                    <Text className={`text-xs opacity-40 text-center ${theme.tx_1}`}>
+                        {descriptions[slide]}
+                    </Text>
                 </View>
-                <View className={`w-full flex items-center`}>
-                    <TouchableOpacity 
-                    className={`bg-[#22826a] w-11/12 h-11 rounded-lg justify-center items-center`}
-                    onPress={()=>{
-                        setSlide((prev) => prev + 1)
-                        if(slide >= titles.length - 1){
-                            setSlide(0)
-                        }
-                    }}
+                <View className="w-full flex items-center">
+                    <TouchableOpacity
+                        className={`${theme.bg_green_100} w-11/12 h-11 rounded-lg justify-center items-center`}
+                        onPress={()=>{
+                            click();
+                        }}
                     >
-                        <Text className={`color-white font-bold`}>Next</Text>
+                        <Text className={`text-white font-bold ${theme.tx_2}`}>Next</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className={`w-11/12 h-11 rounded-lg justify-center items-center`}>
-                        <Text className={`color-black font-bold opacity-40`}>Skip</Text>
+                    <TouchableOpacity className="w-11/12 h-11 rounded-lg justify-center items-center">
+                        <Text className={`text-black font-bold opacity-40 ${theme.tx_1}`}>Skip</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default Welcome
+export default Welcome;

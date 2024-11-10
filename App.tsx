@@ -11,10 +11,12 @@ import Welcome from './src/pages/Welcome';
 export default function App() {
   return (
     <SafeAreaView className='flex-1 '>
+      <ThemeProvider>
       <StatusBar style="light" backgroundColor='#22826a' />
         {/* <SignUp/> */}
         {/* <Auth /> */}
         <Welcome/>
+      </ThemeProvider>
       </SafeAreaView>
   );
 }

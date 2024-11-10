@@ -14,7 +14,7 @@ export default function Auth() {
         <Text className={`${theme.tx_2} text-xl font-bold mb-10`}>
           Welcome to My App
         </Text>
-        <TouchableOpacity className={`flex ${theme.bg_3} w-3/4 rounded-xl h-10 mb-5 justify-center items-center`}>
+        <TouchableOpacity className={`flex w-3/4 rounded-xl h-10 mb-5 justify-center items-center`}>
         <Text className={`color-white text-sm font-bold`}>
           Get Started
         </Text>
