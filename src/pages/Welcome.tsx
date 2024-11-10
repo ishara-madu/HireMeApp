@@ -107,7 +107,7 @@ const Welcome = () => {
                     {
                         slide != images.length-1 ? (
                             <TouchableOpacity className="w-11/12 h-11 rounded-lg justify-center items-center">
-                                <Text className={`text-black font-bold opacity-40 ${theme.tx_1}`}>Skip</Text>
+                                <Text className={`${theme.tx_1} font-bold opacity-40 ${theme.tx_1}`}>Skip</Text>
                             </TouchableOpacity>
                         ):(
                             <View className={`w-11/12 h-11 rounded-lg justify-center items-center`}></View>
