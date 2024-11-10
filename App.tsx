@@ -13,8 +13,8 @@ export default function App() {
     <SafeAreaView className='flex-1 '>
       <ThemeProvider>
       <StatusBar style="light" backgroundColor='#22826a' />
-      <SignIn />
-        {/* <SignUp/> */}
+      {/* <SignIn /> */}
+        <SignUp/>
         {/* <ChoosePath /> */}
         {/* <Welcome/> */}
       </ThemeProvider>

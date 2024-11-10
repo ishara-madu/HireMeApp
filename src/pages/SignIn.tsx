@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useTheme } from '../context/ThemeContext';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import Ionicons from '@expo/vector-icons/Ionicons';
 const SignIn = () => {
   const { theme } = useTheme();
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -27,9 +26,6 @@ const SignIn = () => {
       {
         !isKeyboardVisible && (
           <View className={`${theme.bg_2} h-[27%] w-full flex items-center relative`}>
-            <TouchableOpacity className={`w-10 h-10 flex justify-center items-center absolute left-0 rounded-full z-20`}>
-            <Ionicons name="arrow-back" size={24} color="black" />
-            </TouchableOpacity>
             <Image source={require('../../assets/employee.jpg')} className={`w-full h-full opacity-40`} />
             <View className={`w-36 h-36 ${theme.bg_3} absolute bottom-[-40%] rounded-full flex items-center justify-center`}>
               <Image source={require('../../assets/signuplogo.png')} className={`w-5/6 h-5/6`} resizeMode='contain' />
@@ -91,7 +87,7 @@ const SignIn = () => {
               <Text className={`text-white font-bold ${theme.tx_2}`}>Login</Text>
             </TouchableOpacity>
           </View>
-          <Text className={`text-xs ${theme.tx_1}`}>Don't have an account? <Text className={`font-bold`}>Register</Text></Text>
+          <Text className={`text-xs ${theme.tx_1}`}>Don't have an account? <Text className={`font-bold ${theme.tx_3}`}>Register</Text></Text>
         </View>
       </View>
     </View>
