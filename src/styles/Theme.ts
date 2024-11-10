@@ -15,5 +15,5 @@ export const darkTheme = {
 
     tx_1:'color-[#000000]',
     tx_2:'color-[#ffffff]',
-    tx_3:'color-[#ffffff]',
+    tx_3:'color-[#2d7fa8]',
 }

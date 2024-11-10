@@ -67,7 +67,7 @@ const SignIn = () => {
               />
             </View>
             <View className={`w-11/12 flex items-end`}>
-            <Text className={`text-xs underline ${}`}>Forget password?</Text>
+            <Text className={`text-xs underline ${theme.tx_3}`}>Forget password?</Text>
             </View>
             <View className={`w-full items-center`}>
               <Text className={`mb-2`}>or</Text>
