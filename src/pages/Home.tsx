@@ -1,10 +1,11 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ScrollViewComponent, ScrollView } from 'react-native'
 import React, { useContext } from 'react'
 import { useTheme } from '../context/ThemeContext';
 import Topnav from '../components/home/Topnav';
 import SearchArea from '../components/home/SearchArea';
 import { SearchAreaContext } from '../context/SearchAreaContext';
 import FilterArea from '../components/home/FilterArea';
+import Employees from '../components/home/Employees';
 
 
 const Home = () => {
@@ -17,7 +18,12 @@ const Home = () => {
             <SearchArea />
             {
                 !isFocusSearch && (
-                    <FilterArea />
+                    <ScrollView className={`flex-1 w-full`}>
+                        <View className={`flex-1 w-full items-center`}>
+                        <FilterArea />
+                        <Employees />
+                        </View>
+                    </ScrollView>
                 )
             }
         </View>
