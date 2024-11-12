@@ -10,30 +10,45 @@ const Topnav = () => {
     const { isFocusSearch } = useContext(SearchAreaContext);
 
     return (
-        <View className={`${theme.bg_1} flex w-full ${!isFocusSearch ? ("h-[10%]"):("h-28 absolute")} items-center`}>
-            {
-                !isFocusSearch && (
-                    <View className={`flex w-11/12 h-full flex-row justify-between items-center`}>
-                        <View className={`flex-row h-full items-center gap-x-2`}>
-                            <Image source={require('../../../assets/profile.png')} className={`w-9 h-9`} />
-                            <View className={`justify-center h-full`}>
-                                <Text className={`text-[11px] font-semibold ${theme.tx_2}`}>Hello Isharamadu</Text>
-                                <View className={`flex-row items-center`}>
-                                    <Text className={`text-[10px] ${theme.tx_2}`}>Nochchiyagama &nbsp;</Text>
-                                    <View className={`flex justify-center`}>
-                                        <SimpleLineIcons name="arrow-down" size={10} color="white" />
+        <>
+            <View className={`${theme.bg_1} flex w-full ${!isFocusSearch ? ("h-[10%]") : ("h-28 absolute z-10")} items-center`}>
+                {
+                    !isFocusSearch && (
+                        <View className={`flex w-11/12 h-full flex-row justify-between items-center`}>
+                            <View className={`flex-row h-full items-center gap-x-2`}>
+                                <Image source={require('../../../assets/profile.png')} className={`w-9 h-9`} />
+                                <View className={`justify-center h-full`}>
+                                    <Text className={`text-[11px] font-semibold ${theme.tx_2}`}>Hello Isharamadu</Text>
+                                    <View className={`flex-row items-center`}>
+                                        <Text className={`text-[10px] ${theme.tx_2}`}>Nochchiyagama &nbsp;</Text>
+                                        <View className={`flex justify-center`}>
+                                            <SimpleLineIcons name="arrow-down" size={10} color="white" />
+                                        </View>
                                     </View>
                                 </View>
                             </View>
+                            <View className={``}>
+                                <Ionicons name="notifications-outline" size={20} color="white" />
+                            </View>
                         </View>
-                        <View className={``}>
-                            <Ionicons name="notifications-outline" size={20} color="white" />
+                    )
+                }
+
+            </View>
+            {
+                isFocusSearch && (
+                    <View className={`flex w-full absolute h-full z-0 mt-28 items-center`}>
+                        <View className={`flex-row justify-between items-center h-5 mt-3 w-11/12`}>
+                        <Text className={`text-xs font-semibold`}>Recent search</Text>
+                        <Text className={`text-[10px] opacity-40`}>Clear all</Text>
+                        </View>
+                        <View>
+                            
                         </View>
                     </View>
                 )
             }
-
-        </View>
+        </>
     )
 }
 

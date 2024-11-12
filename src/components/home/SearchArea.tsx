@@ -26,10 +26,10 @@ const SearchArea = () => {
         <View className={`w-full h-[25%] relative items-center`}>
             {
                 isFocusSearch && (
-                    <View className={`flex-row items-center gap-x-2 w-11/12 pt-3`}>
+                    <View className={`flex-row items-center w-11/12 pt-3`}>
                         <TouchableOpacity
-                        onPress={()=>{Keyboard.dismiss()}}
-                            className={`w-5 h-5 z-30 rounded-full`}>
+                            onPress={() => { Keyboard.dismiss() }}
+                            className={`w-5 h-5 z-30 rounded-full flex justify-center mr-3`}>
                             <Ionicons name="arrow-back" size={18} color="white" />
                         </TouchableOpacity>
                         <Text className={`text-xs font-semibold ${theme.tx_2}`}>Search</Text>
@@ -54,7 +54,7 @@ const SearchArea = () => {
                         <EvilIcons name="search" size={20} color="black" />
                     </View>
                     <TextInput
-                    onFocus={searchHideHandler}
+                        onFocus={searchHideHandler}
                         placeholder='Search category, name, etc'
                         className={`w-11/12 ${theme.bg_3} rounded-lg h-9 text-[10px] font-semibold pl-9`} />
                 </View>
