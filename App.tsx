@@ -6,18 +6,28 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import SignUp from './src/pages/SignUp';
 import Welcome from './src/pages/Welcome';
 import ChoosePath from './src/pages/ChoosePath';
+import Otp from './src/pages/Otp';
+import Loading from './src/components/Loading';
+import Home from './src/pages/Home';
+import SearchArea from './src/components/home/SearchArea';
+import { SearchAreaProvider } from './src/context/SearchAreaContext';
 
 
 export default function App() {
   return (
     <SafeAreaView className='flex-1 '>
       <ThemeProvider>
-      <StatusBar style="light" backgroundColor='#22826a' />
-      {/* <SignIn /> */}
-        <SignUp/>
-        {/* <ChoosePath /> */}
-        {/* <Welcome/> */}
+        <SearchAreaProvider>
+          <StatusBar style="light" backgroundColor='#22826a' />
+          {/* <SignIn /> */}
+          {/* <SignUp/> */}
+          {/* <Otp/> */}
+          {/* <ChoosePath /> */}
+          {/* <Welcome/> */}
+          {/* <Loading/> */}
+          <Home />
+        </SearchAreaProvider>
       </ThemeProvider>
-      </SafeAreaView>
+    </SafeAreaView>
   );
 }

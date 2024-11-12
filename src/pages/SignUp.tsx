@@ -11,7 +11,6 @@ const SignUp = () => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
-    // Add event listeners for keyboard show and hide
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardVisible(true);
     });
@@ -19,7 +18,6 @@ const SignUp = () => {
       setKeyboardVisible(false);
     });
 
-    // Clean up the listeners on component unmount
     return () => {
       keyboardDidShowListener.remove();
       keyboardDidHideListener.remove();
