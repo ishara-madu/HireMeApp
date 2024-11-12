@@ -4,8 +4,8 @@ import { useTheme } from '../../context/ThemeContext';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SearchAreaContext } from '../../context/SearchAreaContext';
-import RecentSearch from '../topnav/RecentSearch';
-import TrendingSearch from '../topnav/TrendingSearch';
+import RecentSearch from './topnav/RecentSearch';
+import TrendingSearch from './topnav/TrendingSearch';
 
 const Topnav = () => {
     const { theme } = useTheme();

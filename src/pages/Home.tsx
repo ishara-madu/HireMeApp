@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import Topnav from '../components/home/Topnav';
 import SearchArea from '../components/home/SearchArea';
 import { SearchAreaContext } from '../context/SearchAreaContext';
+import FilterArea from '../components/home/FilterArea';
 
 
 const Home = () => {
@@ -14,6 +15,11 @@ const Home = () => {
         <View className={`${theme.bg_3} flex-1 items-center`}>
             <Topnav />
             <SearchArea />
+            {
+                !isFocusSearch && (
+                    <FilterArea />
+                )
+            }
         </View>
     )
 }
