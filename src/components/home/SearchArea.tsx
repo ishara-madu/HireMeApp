@@ -9,24 +9,24 @@ const SearchArea = () => {
     const { theme } = useTheme();
     const { isFocusSearch, setIsFocusSearch } = useContext(SearchAreaContext);
 
-    const searchHideHandler = () => {
-        const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-            setIsFocusSearch(true)
-        })
-        const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-            setIsFocusSearch(false)
-        })
-        return () => {
-            keyboardDidShowListener.remove();
-            keyboardDidHideListener.remove();
-        };
-    }
+    // const searchHideHandler = () => {
+    //     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+    //         setIsFocusSearch(true)
+    //     })
+    //     const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+    //         setIsFocusSearch(false)
+    //     })
+    //     return () => {
+    //         keyboardDidShowListener.remove();
+    //         keyboardDidHideListener.remove();
+    //     };
+    // }
 
     return (
         <View className={`w-full h-[25%] relative items-center`}>
             {
                 isFocusSearch && (
-                    <View className={`flex-row items-center w-11/12 pt-3`}>
+                    <View className={`flex-row items-center w-11/12 pt-3 z-30`}>
                         <TouchableOpacity
                             onPress={() => { Keyboard.dismiss() }}
                             className={`w-5 h-5 z-30 rounded-full flex justify-center mr-3`}>
@@ -49,12 +49,13 @@ const SearchArea = () => {
                 {
                     !isFocusSearch && <Text className={`font-bold ${theme.tx_2}`}>FIND THE RIGHT EMPLOYEE</Text>
                 }
-                <View className={`flex-row ${isFocusSearch && "top-7"}`}>
-                    <View className={`absolute z-20 flex justify-center h-full opacity-60 ml-2`}>
+                <View className={`flex-row justify-center relative ${isFocusSearch && "absolute top-14 w-full"}`}>
+                    <View className={`absolute z-20 flex justify-center h-full left-2 opacity-60 ${isFocusSearch && "ml-3"}`}>
                         <EvilIcons name="search" size={20} color="black" />
                     </View>
                     <TextInput
-                        onFocus={searchHideHandler}
+                        onFocus={()=>{setIsFocusSearch(true)}}
+                        onBlur={()=>{setIsFocusSearch(false)}}
                         placeholder='Search category, name, etc'
                         className={`w-11/12 ${theme.bg_3} rounded-lg h-9 text-[10px] font-semibold pl-9`} />
                 </View>

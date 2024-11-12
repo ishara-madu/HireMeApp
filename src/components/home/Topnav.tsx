@@ -1,9 +1,11 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ScrollView } from 'react-native'
 import React, { useContext } from 'react'
 import { useTheme } from '../../context/ThemeContext';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SearchAreaContext } from '../../context/SearchAreaContext';
+import RecentSearch from '../topnav/RecentSearch';
+import TrendingSearch from '../topnav/TrendingSearch';
 
 const Topnav = () => {
     const { theme } = useTheme();
@@ -37,14 +39,9 @@ const Topnav = () => {
             </View>
             {
                 isFocusSearch && (
-                    <View className={`flex w-full absolute h-full z-0 mt-28 items-center`}>
-                        <View className={`flex-row justify-between items-center h-5 mt-3 w-11/12`}>
-                        <Text className={`text-xs font-semibold`}>Recent search</Text>
-                        <Text className={`text-[10px] opacity-40`}>Clear all</Text>
-                        </View>
-                        <View>
-                            
-                        </View>
+                    <View className={`flex h-full w-full justify-start bg-white absolute z-0 mt-28 items-center`}>
+                            <RecentSearch />
+                            <TrendingSearch />
                     </View>
                 )
             }
