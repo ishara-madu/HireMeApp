@@ -8,6 +8,7 @@ import FilterArea from '../components/home/FilterArea';
 import Employees from '../components/home/Employees';
 import Feather from '@expo/vector-icons/Feather';
 import SearchResult from '../components/home/employees/SearchResult';
+import DropdownList from '../components/home/filterArea/dropDown/DropdownList';
 
 const Home = () => {
     const { theme } = useTheme();
@@ -71,6 +72,7 @@ const Home = () => {
                 }
 
             </>
+            <DropdownList/>
         </View>
     )
 }
