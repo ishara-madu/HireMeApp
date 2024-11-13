@@ -9,7 +9,7 @@ import TrendingSearch from './topnav/TrendingSearch';
 
 const Topnav = () => {
     const { theme } = useTheme();
-    const { isFocusSearch } = useContext(SearchAreaContext);
+    const { isFocusSearch,isSearchEmpty } = useContext(SearchAreaContext);
 
     return (
         <>
@@ -38,12 +38,13 @@ const Topnav = () => {
 
             </View>
             {
-                isFocusSearch && (
-                    <View className={`flex h-full w-full justify-start bg-white absolute z-0 mt-28 items-center`}>
+                
+                    (isFocusSearch && isSearchEmpty) && (
+                        <View className={`flex h-full w-full justify-start bg-white absolute z-0 mt-28 items-center`}>
                             <RecentSearch />
                             <TrendingSearch />
                     </View>
-                )
+                    )
             }
         </>
     )

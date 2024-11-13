@@ -1,13 +1,13 @@
 import { View, Text, Image, TextInput, TouchableOpacity, Keyboard } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useTheme } from '../../context/ThemeContext'
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import { SearchAreaContext } from '../../context/SearchAreaContext';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const SearchArea = () => {
     const { theme } = useTheme();
-    const { isFocusSearch, setIsFocusSearch } = useContext(SearchAreaContext);
+    const { isFocusSearch, setIsFocusSearch, isFilterShow, setIsFilterShow,isSearchEmpty } = useContext(SearchAreaContext);
 
     // const searchHideHandler = () => {
     //     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
@@ -51,13 +51,28 @@ const SearchArea = () => {
                 }
                 <View className={`flex-row justify-center relative ${isFocusSearch && "absolute top-14 w-full"}`}>
                     <View className={`absolute z-20 flex justify-center h-full left-2 opacity-60 ${isFocusSearch && "ml-3"}`}>
-                        <EvilIcons name="search" size={20} color="black" />
+                        <Ionicons name="search" size={20} color="black" />
                     </View>
                     <TextInput
-                        onFocus={()=>{setIsFocusSearch(true)}}
-                        onBlur={()=>{setIsFocusSearch(false)}}
+                        onFocus={() => { setIsFocusSearch(true) }}
+                        onBlur={() => { setIsFocusSearch(false) }}
                         placeholder='Search category, name, etc'
                         className={`w-11/12 ${theme.bg_3} rounded-lg h-9 text-[10px] font-semibold pl-9`} />
+                    {
+                        (!isFocusSearch || !isSearchEmpty) && (
+                            <TouchableOpacity
+                            onPress={() => setIsFilterShow(!isFilterShow)}
+                                className={`absolute z-20 flex justify-center h-full right-2 opacity-60 ${!isSearchEmpty && "mr-3"}`}>
+                                {
+                                    (isFilterShow) ? (
+                                        <MaterialIcons name="filter-list-off" size={20} color="black" />
+                                    ) : (
+                                        <MaterialIcons name="filter-list" size={20} color="black" />
+                                    )
+                                }
+                            </TouchableOpacity>
+                        )
+                    }
                 </View>
             </View>
         </View>

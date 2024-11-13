@@ -2,7 +2,7 @@ import { View, Text, ScrollView, FlatList, Image, TouchableOpacity } from 'react
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useTheme } from '../../../context/ThemeContext';
-const NearbyYou = () => {
+const TopRated = () => {
     const {theme} = useTheme();
     const users = [
         {
@@ -39,7 +39,7 @@ const NearbyYou = () => {
     );
     return (
         <>
-            <Text className={`text-xs font-semibold`}>Nearby You</Text>
+            <Text className={`text-xs font-semibold mt-5`}>Top-Rated Employees</Text>
             <View className={`w-full`}>
                 <FlatList
                     data={users}
@@ -53,4 +53,4 @@ const NearbyYou = () => {
     )
 }
 
-export default NearbyYou
+export default TopRated
