@@ -11,6 +11,7 @@ import Loading from './src/components/Loading';
 import Home from './src/pages/Home';
 import SearchArea from './src/components/home/SearchArea';
 import { SearchAreaProvider } from './src/context/SearchAreaContext';
+import { MapProvider } from './src/context/MapContext';
 
 
 export default function App() {
@@ -18,14 +19,16 @@ export default function App() {
     <SafeAreaView className='flex-1 '>
       <ThemeProvider>
         <SearchAreaProvider>
-          <StatusBar style="light" backgroundColor='#22826a' />
-          {/* <SignIn /> */}
-          {/* <SignUp/> */}
-          {/* <Otp/> */}
-          {/* <ChoosePath /> */}
-          {/* <Welcome/> */}
-          {/* <Loading/> */}
-          <Home />
+          <MapProvider>
+            <StatusBar style="light" backgroundColor='#22826a' />
+            {/* <SignIn /> */}
+            {/* <SignUp/> */}
+            {/* <Otp/> */}
+            {/* <ChoosePath /> */}
+            {/* <Welcome/> */}
+            {/* <Loading/> */}
+            <Home />
+          </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>
     </SafeAreaView>

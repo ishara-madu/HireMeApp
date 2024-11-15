@@ -9,10 +9,13 @@ import Employees from '../components/home/Employees';
 import Feather from '@expo/vector-icons/Feather';
 import SearchResult from '../components/home/employees/SearchResult';
 import DropdownList from '../components/home/filterArea/dropDown/DropdownList';
+import { MapContext } from '../context/MapContext';
+import Map from '../components/home/map/Map';
 
 const Home = () => {
     const { theme } = useTheme();
-    const { isFocusSearch, setIsFocusSearch, isFilterShow, setIsFilterShow, isSearchEmpty } = useContext(SearchAreaContext);
+    const { isFocusSearch, isFilterShow, isSearchEmpty } = useContext(SearchAreaContext);
+    const { isOpenMapArea } = useContext(MapContext);
 
     return (
         <View className={`${theme.bg_3} flex-1 items-center relative`}>
@@ -35,18 +38,24 @@ const Home = () => {
                     </View>
                 </ScrollView>
                 <View className={`absolute top-28 h-full w-full items-center`}>
-                {
-                    (!isSearchEmpty && isFocusSearch) && (
-                        <>
-                        {
-                            isFilterShow && (
-                                <FilterArea />
-                            )
-                        }
-                        <SearchResult />
-                        </>
-                    )
-                }
+                    {
+                        (!isSearchEmpty && isFocusSearch) && (
+                            <>
+                                {
+                                    isFilterShow && (
+                                        <FilterArea />
+                                    )
+                                }
+                                {
+                                    isOpenMapArea ? (
+                                        <Map/>
+                                    ) : (
+                                        <SearchResult />
+                                    )
+                                }
+                            </>
+                        )
+                    }
                 </View>
                 {
                     (!isFocusSearch) && (

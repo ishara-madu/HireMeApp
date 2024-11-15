@@ -64,7 +64,7 @@ const SearchResult = () => {
     );
     return (
         <>
-            <View className={`w-full ${isFilterShow ? "mb-72" : "mb-40"} mt-1`}>
+            <View className={`w-full ${isFilterShow ? "mb-64" : "mb-40"} mt-1`}>
                 <FlatList
                     data={users}
                     renderItem={renderItem}

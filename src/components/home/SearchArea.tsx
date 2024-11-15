@@ -4,10 +4,12 @@ import { useTheme } from '../../context/ThemeContext'
 import { SearchAreaContext } from '../../context/SearchAreaContext';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { MapContext } from '../../context/MapContext';
 
 const SearchArea = () => {
     const { theme } = useTheme();
     const { isFocusSearch, setIsFocusSearch, isFilterShow, setIsFilterShow,isSearchEmpty } = useContext(SearchAreaContext);
+    const {isOpenMapArea} = useContext(MapContext);
 
     // const searchHideHandler = () => {
     //     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
@@ -32,7 +34,13 @@ const SearchArea = () => {
                             className={`w-5 h-5 z-30 rounded-full flex justify-center mr-3`}>
                             <Ionicons name="arrow-back" size={18} color="white" />
                         </TouchableOpacity>
-                        <Text className={`text-xs font-semibold ${theme.tx_2}`}>Search</Text>
+                        {
+                            isOpenMapArea ? (
+                                <Text className={`text-xs font-semibold ${theme.tx_2}`}>Map</Text>
+                            ):(
+                                <Text className={`text-xs font-semibold ${theme.tx_2}`}>Search</Text>
+                            )
+                        }
                     </View>
                 )
             }
@@ -56,10 +64,10 @@ const SearchArea = () => {
                     <TextInput
                         onFocus={() => { setIsFocusSearch(true) }}
                         onBlur={() => { setIsFocusSearch(false) }}
-                        placeholder='Search category, name, etc'
+                        placeholder={`${isOpenMapArea ? 'Search location here' : 'Search category, name, etc'}`}
                         className={`w-11/12 ${theme.bg_3} rounded-lg h-9 text-[10px] font-semibold pl-9`} />
                     {
-                        (!isFocusSearch || !isSearchEmpty) && (
+                        ((!isFocusSearch || !isSearchEmpty) && (!isOpenMapArea)) && (
                             <TouchableOpacity
                             onPress={() => setIsFilterShow(!isFilterShow)}
                                 className={`absolute z-20 flex justify-center h-full right-2 opacity-60 ${!isSearchEmpty && "mr-3"}`}>
