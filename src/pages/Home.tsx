@@ -49,7 +49,7 @@ const Home = () => {
                 }
                 </View>
                 {
-                    (!isFocusSearch || !isSearchEmpty) && (
+                    (!isFocusSearch) && (
                         <View className={`absolute w-full h-12 ${theme.bg_3} border-t-2 border-[#d4d4d4] bottom-0 shadow-lg shadow-black z-20 flex-row justify-evenly items-center`}>
                             <TouchableOpacity className={`items-center`}>
                                 <Feather name="home" size={18} color={theme.color_1} />
