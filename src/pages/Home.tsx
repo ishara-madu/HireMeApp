@@ -72,7 +72,7 @@ const Home = () => {
                 }
 
             </>
-            <DropdownList/>
+            {/* <DropdownList/> */}
         </View>
     )
 }
