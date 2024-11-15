@@ -28,7 +28,6 @@ const SearchResult = () => {
     ]
     const renderItem = ({ item }: any) => (
         <>
-
             <TouchableOpacity className={`h-32 w-full flex justify-start items-center my-1 rounded-md ${theme.bg_3} shadow-lg shadow-black overflow-hidden`}>
                 <View className={`w-full h-full flex-row`}>
                     <View className={`w-3/6 h-full`} >
