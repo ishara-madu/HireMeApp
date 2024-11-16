@@ -11,7 +11,7 @@ interface Props {
 export const SearchAreaProvider =({children}:Props) => {
   const [isFocusSearch, setIsFocusSearch] = useState<any>(false);
   const [isFilterShow, setIsFilterShow] = useState<any>(false);
-  const [isSearchEmpty,setIsSearchEmpty] = useState<any>(false);
+  const [isSearchEmpty,setIsSearchEmpty] = useState<any>(true);
 
   return (
     <SearchAreaContext.Provider value={{isFocusSearch, setIsFocusSearch,isFilterShow, setIsFilterShow,isSearchEmpty,setIsSearchEmpty}}>

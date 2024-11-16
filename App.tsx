@@ -12,6 +12,7 @@ import Home from './src/pages/Home';
 import SearchArea from './src/components/home/SearchArea';
 import { SearchAreaProvider } from './src/context/SearchAreaContext';
 import { MapProvider } from './src/context/MapContext';
+import Profile from './src/pages/Profile';
 
 
 export default function App() {
@@ -27,7 +28,8 @@ export default function App() {
             {/* <ChoosePath /> */}
             {/* <Welcome/> */}
             {/* <Loading/> */}
-            <Home />
+            {/* <Home /> */}
+            <Profile/>
           </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>

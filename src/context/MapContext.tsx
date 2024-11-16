@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const MapProvider = ({ children }: Props) => {
-    const [isOpenMapArea, setIsOpenMapArea] = useState<any>(true);
+    const [isOpenMapArea, setIsOpenMapArea] = useState<any>(false);
     return (
         <MapContext.Provider value={{ isOpenMapArea, setIsOpenMapArea }}>
             {children}
