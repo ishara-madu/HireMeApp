@@ -5,9 +5,9 @@ import { useTheme } from '../../../context/ThemeContext';
 const ProfileDescription = () => {
     const { theme } = useTheme();
     return (
-        <View className={`w-full h-48 ${theme.bg_3} items-center justify-center shadow-md shadow-black`}>
+        <View className={`w-full flex-1 pb-5 ${theme.bg_3} items-center justify-center shadow-md shadow-black`}>
             <View className={`w-11/12 h-[90%]`}>
-                <Text className={`text-xs font-semibold ${theme.tx_3}`}>Details</Text>
+                <Text className={`text-xs font-semibold ${theme.tx_3}`}>Description</Text>
                 <View className={`w-full flex-row justify-start`}>
                     <View className={`items-start mt-2`}>
                         <Text className={`text-[10px] opacity-60 text-justify`}>
