@@ -4,7 +4,7 @@ import TopLeft from '../components/topnav/TopLeft'
 import { useTheme } from '../context/ThemeContext'
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 const Notification = () => {
   const { theme } = useTheme();
   const [openItemId, setOpenItemId] = useState<string | null>(null);
@@ -28,60 +28,8 @@ const Notification = () => {
       description: "",
       time: "3 hours ago",
     },
-    {
-      id: '3',
-      image: 'https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg',
-      name: "eranga auto AC",
-      request: false,
-      item: "item1",
-      description: "started repairing",
-      time: "3 hours ago",
-    },
-    {
-      id: '4',
-      image: 'https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg',
-      name: "eranga auto AC",
-      request: false,
-      item: "item1",
-      description: "started repairing",
-      time: "3 hours ago",
-    },
-    {
-      id: '5',
-      image: 'https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg',
-      name: "eranga auto AC",
-      request: false,
-      item: "item1",
-      description: "started repairing",
-      time: "3 hours ago",
-    },
-    {
-      id: '6',
-      image: 'https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg',
-      name: "eranga auto AC",
-      request: false,
-      item: "item1",
-      description: "started repairing",
-      time: "3 hours ago",
-    },
-    {
-      id: '7',
-      image: 'https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg',
-      name: "eranga auto AC",
-      request: false,
-      item: "item1",
-      description: "started repairing",
-      time: "3 hours ago",
-    },
-    {
-      id: '8',
-      image: 'https://play-lh.googleusercontent.com/DTzWtkxfnKwFO3ruybY1SKjJQnLYeuK3KmQmwV5OQ3dULr5iXxeEtzBLceultrKTIUTr',
-      name: "PixelEye studio",
-      request: true,
-      item: "",
-      description: "",
-      time: "3 hours ago",
-    },
+
+
   ]);
 
 
@@ -173,6 +121,7 @@ const Notification = () => {
             />
           ) : (
             <View className={`w-full flex-1 items-center justify-center opacity-40`}>
+              <MaterialCommunityIcons name="sleep" size={24} color="black" />
               <Text className={`text-xs ${theme.tx_1} `}>No new notifications</Text>
             </View>
           )

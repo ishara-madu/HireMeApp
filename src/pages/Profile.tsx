@@ -53,8 +53,8 @@ const Profile = () => {
       <View className={`w-full items-center h-[15%] shadow-lg shadow-black ${theme.bg_3}`}>
         <View className={`flex-row items-center justify-between h-full w-11/12`}>
           <View className={`h-full flex-row items-center`}>
-            <View className={`w-14 h-14 rounded-full`}>
-              <Image source={require("../../assets/profile.png")} resizeMode='contain' className={`w-full h-full`} />
+            <View className={`w-14 h-14 rounded-full overflow-hidden`}>
+              <Image source={require("../../assets/profile.jpg")} resizeMode='cover' className={`w-full h-full`} />
             </View>
             <View className={`ml-2`}>
               <Text className={`text-xs font-semibold`}>Isharamadu</Text>

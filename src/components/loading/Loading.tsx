@@ -1,6 +1,6 @@
 import { View, Text, Animated, ActivityIndicator } from 'react-native'
 import React, { useEffect, useRef } from 'react'
-import { useTheme } from '../context/ThemeContext'
+import { useTheme } from '../../context/ThemeContext'
 
 const Loading = () => {
     const { theme } = useTheme();

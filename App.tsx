@@ -7,7 +7,7 @@ import SignUp from './src/pages/SignUp';
 import Welcome from './src/pages/Welcome';
 import ChoosePath from './src/pages/ChoosePath';
 import Otp from './src/pages/Otp';
-import Loading from './src/components/Loading';
+import Loading from './src/components/loading/Loading';
 import Home from './src/pages/Home';
 import SearchArea from './src/components/home/SearchArea';
 import { SearchAreaProvider } from './src/context/SearchAreaContext';
