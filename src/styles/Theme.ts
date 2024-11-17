@@ -10,6 +10,9 @@ export const lightTheme = {
     tx_2:'color-[#ffffff]',
     tx_3:'color-[#34aeeb]',
 
+    border_1:'border-[#000000]',
+    border_2:'border-[#22826a]'
+
 }
 export const darkTheme = {
     bg_1 : 'bg-[#22826a]',
@@ -23,4 +26,7 @@ export const darkTheme = {
     tx_1:'color-[#000000]',
     tx_2:'color-[#ffffff]',
     tx_3:'color-[#22826a]',
+
+    border_1:'border-[#000000]',
+    border_2:'border-[#22826a]'
 }

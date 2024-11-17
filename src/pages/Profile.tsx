@@ -10,7 +10,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 const Profile = () => {
   const { theme } = useTheme();
 
-  let numb: any = 0;
   const items = {
     1: {
       icon: <AntDesign name="hearto" size={18} color="black" />,
@@ -19,7 +18,7 @@ const Profile = () => {
     },
     2: {
       icon: <AntDesign name="swap" size={18} color="black" />,
-      title: "Switch to Selling",
+      title: "Switch to worker account",
       color: "text-black"
     },
 

@@ -15,6 +15,7 @@ import { MapProvider } from './src/context/MapContext';
 import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
 import Notification from './src/pages/Notification';
+import WorkerProfile from './src/pages/WorkerProfile';
 
 
 export default function App() {
@@ -33,7 +34,8 @@ export default function App() {
             {/* <Home /> */}
             {/* <Profile/> */}
             {/* <EditProfile/> */}
-            <Notification/>
+            {/* <Notification/> */}
+            <WorkerProfile/>
           </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>
