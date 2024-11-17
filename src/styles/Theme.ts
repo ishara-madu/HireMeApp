@@ -4,6 +4,7 @@ export const lightTheme = {
     bg_3 : 'bg-[#e6edeb]',
 
     color_1:'#22826a',
+    color_2:'#e6edeb',
 
     tx_1:'color-[#000000]',
     tx_2:'color-[#ffffff]',
@@ -16,6 +17,8 @@ export const darkTheme = {
     bg_3 : 'bg-[#e6edeb]',
 
     color_1:'#22826a',
+    color_2:'#e6edeb',
+
 
     tx_1:'color-[#000000]',
     tx_2:'color-[#ffffff]',

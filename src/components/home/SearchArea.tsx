@@ -11,18 +11,7 @@ const SearchArea = () => {
     const { isFocusSearch, setIsFocusSearch, isFilterShow, setIsFilterShow,isSearchEmpty } = useContext(SearchAreaContext);
     const {isOpenMapArea} = useContext(MapContext);
 
-    // const searchHideHandler = () => {
-    //     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-    //         setIsFocusSearch(true)
-    //     })
-    //     const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-    //         setIsFocusSearch(false)
-    //     })
-    //     return () => {
-    //         keyboardDidShowListener.remove();
-    //         keyboardDidHideListener.remove();
-    //     };
-    // }
+    
 
     return (
         <View className={`w-full h-[25%] relative items-center`}>

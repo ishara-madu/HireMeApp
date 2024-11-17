@@ -66,12 +66,12 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <View className={`flex-1 w-full items-center`}>
+      <View className={`flex-1 w-full mt-2 items-center`}>
         <ScrollView showsVerticalScrollIndicator={false} className={`w-11/12 mb-12 flex-1`}>
           {
             Object.entries(items).map(([key, item]) => {
               return (
-                <TouchableOpacity key={key} className={`w-full h-14 mt-2 flex-row justify-between`}>
+                <TouchableOpacity key={key} className={`w-full h-14 flex-row justify-between`}>
                   <View className={`h-full items-center flex-row gap-x-3 px-2`}>
                     {item.icon}
                     <Text className={`text-xs ${item.color}`}>{item.title}</Text>

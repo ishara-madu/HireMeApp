@@ -13,6 +13,8 @@ import SearchArea from './src/components/home/SearchArea';
 import { SearchAreaProvider } from './src/context/SearchAreaContext';
 import { MapProvider } from './src/context/MapContext';
 import Profile from './src/pages/Profile';
+import EditProfile from './src/pages/EditProfile';
+import Notification from './src/pages/Notification';
 
 
 export default function App() {
@@ -29,7 +31,9 @@ export default function App() {
             {/* <Welcome/> */}
             {/* <Loading/> */}
             {/* <Home /> */}
-            <Profile/>
+            {/* <Profile/> */}
+            {/* <EditProfile/> */}
+            <Notification/>
           </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>
