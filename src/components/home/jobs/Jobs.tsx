@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useTheme } from '../../../context/ThemeContext'
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -9,7 +9,8 @@ const Jobs = () => {
             <View className={`w-full h-36 items-center shadow-lg shadow-black ${theme.bg_3} mb-5`}>
                 <View className={`h-24 items-center w-full border-b border-[#a5a5a5]`}>
                     <View className={`w-full h-full flex-row items-center`}>
-                        <View className={`h-full w-4/12 bg-black`}>
+                        <View className={`h-full w-4/12 bg-black rounded-r-md overflow-hidden`}>
+                        <Image source={require('../../../../assets/logo1.png')} resizeMode='cover' className={`w-full h-full`}/>
                         </View>
                         <View className={`h-5/6 flex-1 mx-2`}>
                             <Text className={`text-xs font-bold`}>Network room (Unit No.1)</Text>

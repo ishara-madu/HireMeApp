@@ -6,7 +6,7 @@ import Jobs from './jobs/Jobs'
 const JobsArea = () => {
     return (
         <View className={`w-full h-full`}>
-            <TopCenter title='Jobs'/>
+            {/* <TopCenter title='Jobs'/> */}
             <Jobs/>
         </View>
     )
