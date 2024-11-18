@@ -10,7 +10,7 @@ const Jobs = () => {
                 <View className={`h-24 items-center w-full border-b border-[#a5a5a5]`}>
                     <View className={`w-full h-full flex-row items-center`}>
                         <View className={`h-full w-4/12 bg-black rounded-r-md overflow-hidden`}>
-                        <Image source={require('../../../../assets/logo1.png')} resizeMode='cover' className={`w-full h-full`}/>
+                            <Image source={require('../../../../assets/logo1.png')} resizeMode='cover' className={`w-full h-full`} />
                         </View>
                         <View className={`h-5/6 flex-1 mx-2`}>
                             <Text className={`text-xs font-bold`}>Network room (Unit No.1)</Text>

@@ -16,7 +16,7 @@ import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
 import Notification from './src/pages/Notification';
 import WorkerProfile from './src/pages/WorkerProfile';
-import JobsArea from './src/components/home/JobsArea';
+import JobsArea from './src/components/home/jobs/JobsArea';
 
 
 export default function App() {
