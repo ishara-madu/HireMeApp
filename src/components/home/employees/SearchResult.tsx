@@ -44,12 +44,12 @@ const SearchResult = () => {
                                 <Text className={`text-[10px]`}>Air Condition Repiring</Text>
                             </View>
                             <View className={`w-full h-[15%] items-center flex-row gap-x-0.5`}>
-                            <FontAwesome name="star" size={13} color={theme.color_1} />
-                            <FontAwesome name="star" size={13} color={theme.color_1} />
-                            <FontAwesome name="star" size={13} color={theme.color_1} />
-                            <FontAwesome name="star-half-o" size={13} color={theme.color_1} />
-                            <FontAwesome name="star-o" size={13} color={theme.color_1} />
-                            <Text className={`text-[10px] opacity-60`}>(122 review)</Text>
+                                <FontAwesome name="star" size={13} color={theme.color_1} />
+                                <FontAwesome name="star" size={13} color={theme.color_1} />
+                                <FontAwesome name="star" size={13} color={theme.color_1} />
+                                <FontAwesome name="star-half-o" size={13} color={theme.color_1} />
+                                <FontAwesome name="star-o" size={13} color={theme.color_1} />
+                                <Text className={`text-[10px] opacity-60`}>(122 review)</Text>
                             </View>
                             <View className={`w-full h-[35%] justify-center`}>
                                 <TouchableOpacity className={`w-full h-6 ${theme.bg_1} items-center justify-center rounded-md`}>

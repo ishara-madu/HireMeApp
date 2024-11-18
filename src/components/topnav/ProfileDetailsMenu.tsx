@@ -13,9 +13,9 @@ const ProfileDetailsMenu = () => {
                 <TouchableOpacity className={`border-b-4 border-transparent h-full justify-center opacity-60`}>
                     <Text className={`text-xs font-semibold`}>Jobs</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className={`border-b-4 border-transparent h-full justify-center opacity-60`}>
+                {/* <TouchableOpacity className={`border-b-4 border-transparent h-full justify-center opacity-60`}>
                     <Text className={`text-xs font-semibold`}>Employees</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity className={`border-b-4 border-transparent h-full justify-center opacity-60`}>
                     <Text className={`text-xs font-semibold`}>Reviews</Text>
                 </TouchableOpacity>

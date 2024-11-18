@@ -5,17 +5,18 @@ import Name from './profileOverview/Name';
 import ProfileDetails from './profileOverview/ProfileDetails';
 import ProfileDescription from './profileOverview/ProfileDescription';
 import ProfileContact from './profileOverview/ProfileContact';
+import ProfileImages from './profileOverview/ProfileImages';
 
 const ProfileOverview = () => {
     const { theme } = useTheme();
     return (
         <View className={`w-full flex-1 items-center z-0`}>
             <ScrollView className={`w-full h-full ${theme.bg_3}`}>
-                    <Image source={require('../../../assets/logo1.png')} resizeMode='cover' className={`w-full h-36`} />
-                    <Name />
-                    <ProfileDetails />
-                    <ProfileContact/>
-                    <ProfileDescription/>
+                <ProfileImages />
+                <Name />
+                <ProfileDetails />
+                <ProfileContact />
+                <ProfileDescription />
             </ScrollView>
         </View>
     )

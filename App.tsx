@@ -16,6 +16,7 @@ import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
 import Notification from './src/pages/Notification';
 import WorkerProfile from './src/pages/WorkerProfile';
+import JobsArea from './src/components/home/JobsArea';
 
 
 export default function App() {
@@ -35,7 +36,8 @@ export default function App() {
             {/* <Profile/> */}
             {/* <EditProfile/> */}
             {/* <Notification/> */}
-            <WorkerProfile/>
+            {/* <WorkerProfile/> */}
+            <JobsArea/>
           </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>
