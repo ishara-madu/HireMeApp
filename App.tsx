@@ -32,12 +32,12 @@ export default function App() {
             {/* <ChoosePath /> */}
             {/* <Welcome/> */}
             {/* <Loading/> */}
-            {/* <Home /> */}
+            <Home />
             {/* <Profile/> */}
             {/* <EditProfile/> */}
             {/* <Notification/> */}
             {/* <WorkerProfile/> */}
-            <JobsArea/>
+            {/* <JobsArea/> */}
           </MapProvider>
         </SearchAreaProvider>
       </ThemeProvider>

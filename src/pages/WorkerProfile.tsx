@@ -9,9 +9,9 @@ const WorkerProfile = () => {
     return (
         <View className={`h-full w-full`}>
             <TopLeft title='PixelEye Production'/>
-            <ProfileDetailsMenu/>
+            {/* <ProfileDetailsMenu/> */}
             {/* <ProfileOverview/> */}
-            <Reviews/>
+            {/* <Reviews/> */}
         </View>
     )
 }
