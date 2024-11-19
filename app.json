@@ -12,7 +12,8 @@
       "backgroundColor": "#22826a"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hireme.pixeleye"
     },
     "android": {
       "permissions": [
@@ -22,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.hireme.pixeleye"
     },
     "web": {
       "favicon": "./assets/favicon.png"
