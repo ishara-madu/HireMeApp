@@ -17,9 +17,20 @@ import EditProfile from './src/pages/EditProfile';
 import Notification from './src/pages/Notification';
 import WorkerProfile from './src/pages/WorkerProfile';
 import JobsArea from './src/components/home/jobs/JobsArea';
+import { createItem } from './src/services/realm';
+import { useEffect } from 'react';
 
 
 export default function App() {
+  useEffect(()=>{
+    createItem({name: 'John Doe', age: 30, address: '123 Main St'})
+    // createItem({name: 'Jane Doe', age: 25, address: '456 Elm St'})
+    // createItem({name: 'Tom Smith', age: 35, address: '789 Oak St'})
+    // createItem({name: 'Emily Davis', age: 28, address: '123 Main St'})
+    // createItem({name: 'Sarah Johnson', age: 32, address: '456 Elm St'})
+    // createItem({name: 'Michael Brown', age: 37, address: '789 Oak St'})
+    // createItem({name: 'Sarah Davis', age: 29, address: '123 Main St'})
+  },[])
   return (
     <SafeAreaView className='flex-1 '>
       <ThemeProvider>
@@ -32,7 +43,8 @@ export default function App() {
             {/* <ChoosePath /> */}
             {/* <Welcome/> */}
             {/* <Loading/> */}
-            <Home />
+            {/* <Home /> */}
+            
             {/* <Profile/> */}
             {/* <EditProfile/> */}
             {/* <Notification/> */}
