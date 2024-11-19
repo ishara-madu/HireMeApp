@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "14.0.4",
+    "@nozbe/watermelondb": "^0.27.1",
     "expo": "~51.0.39",
     "expo-location": "17.0.1",
     "expo-status-bar": "~1.12.1",
