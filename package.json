@@ -13,6 +13,7 @@
     "@nozbe/watermelondb": "^0.27.1",
     "expo": "~51.0.39",
     "expo-location": "17.0.1",
+    "expo-sqlite": "^15.0.3",
     "expo-status-bar": "~1.12.1",
     "nativewind": "2.0.11",
     "react": "18.2.0",
