@@ -6,3 +6,6 @@ expo-env.d.ts
 
 # Ignore macOS system files
 .DS_Store
+.expo
+.vscode
+node_modules
