@@ -10,6 +10,50 @@ import { StatusBar } from 'expo-status-bar';
 
 const SignUp = () => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showAltLogin, setShowAltLogin] = useState(true);
+  const [textGreen, setTextGreen] = useState(false);
+
+
+
+  const validatePassword = (input: any) => {
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (strongPasswordRegex.test(input)) {
+      setErrorMessage('Strong password! 👍');
+      setTextGreen(true);
+      setTimeout(() => {
+        setShowAltLogin(true);
+      }, 1000);
+    } else {
+      setErrorMessage('Password must be at least 8 characters long, with one uppercase, one lowercase, one number, and one special character.');
+      setShowAltLogin(false);
+      setTextGreen(false);
+    }
+  };
+
+  const handlePasswordChange = (input: any) => {
+    setPassword(input);
+    validatePassword(input);
+  };
+
+
+  const handleCofirmPasswordChange = (input: any) => {
+    setConfirmPassword(input);
+    if (password === input && input !== '') {
+      setErrorMessage('Passwords match!');
+      setTextGreen(true);
+      setTimeout(() => {
+        setShowAltLogin(true);
+      }, 1000);
+    } else {
+      setErrorMessage('Passwords do not match.');
+      setTextGreen(false);
+      setShowAltLogin(false);
+    }
+  };
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardVisible(true);
@@ -23,6 +67,7 @@ const SignUp = () => {
       keyboardDidHideListener.remove();
     };
   }, []);
+
 
   return (
     <SafeAreaView className={`bg-[#ebebeb] flex-1 items-start`}>
@@ -57,6 +102,7 @@ const SignUp = () => {
               <TextInput
                 placeholder="Enter email address"
                 className={`w-full h-10 pl-10 text-xs`}
+                textContentType="emailAddress"
               />
               <View className={`absolute z-20 left-2 opacity-60`}>
                 <MaterialCommunityIcons name="email-outline" size={20} color="black" />
@@ -67,6 +113,9 @@ const SignUp = () => {
                 <MaterialCommunityIcons name="form-textbox-password" size={20} color="black" />
               </View>
               <TextInput
+                onChangeText={handlePasswordChange}
+                value={password}
+                secureTextEntry={true}
                 placeholder="Enter password"
                 className={`w-full h-10 pl-10 text-xs`}
               />
@@ -76,23 +125,36 @@ const SignUp = () => {
                 <MaterialCommunityIcons name="form-textbox-password" size={20} color="black" />
               </View>
               <TextInput
-                placeholder="Enter password"
+                onChangeText={handleCofirmPasswordChange}
+                value={confirmPassword}
+                secureTextEntry={true}
+                placeholder="Confirm password"
                 className={`w-full h-10 pl-10 text-xs`}
               />
             </View>
             <View className={`w-full items-center`}>
-              <Text className={`mb-1`}>or</Text>
-              <View className={`flex w-full justify-center flex-row gap-x-3`}>
-                <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
-                  <FontAwesome name="google" size={20} color="red" />
-                </TouchableOpacity>
-                <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
-                  <FontAwesome name="facebook" size={20} color="blue" />
-                </TouchableOpacity>
-                <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
-                  <FontAwesome name="twitter" size={20} color="#36bfbd" />
-                </TouchableOpacity>
-              </View>
+              {
+                (!showAltLogin) ? (
+                  <View className={`w-full h-14 justify-center items-center z-10`}>
+                    <Text className={`text-xs ${textGreen ? 'text-[#22826a]':'text-red-600'} text-center`}>{errorMessage}</Text>
+                  </View>
+                ) : (
+                  <>
+                    <Text className={`mb-1`}>or</Text>
+                    <View className={`flex w-full justify-center flex-row gap-x-3 z-0`}>
+                      <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
+                        <FontAwesome name="google" size={20} color="red" />
+                      </TouchableOpacity>
+                      <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
+                        <FontAwesome name="facebook" size={20} color="blue" />
+                      </TouchableOpacity>
+                      <TouchableOpacity className={`w-8 h-8 rounded-full justify-center items-center shadow-lg shadow-black bg-[#ebebeb]`}>
+                        <FontAwesome name="twitter" size={20} color="#36bfbd" />
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )
+              }
             </View>
             <TouchableOpacity
               className={`bg-[#22826a] w-11/12 h-11 rounded-lg justify-center items-center mb-1`}

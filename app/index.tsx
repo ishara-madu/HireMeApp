@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeValue } from '@/fetures/welcomeSlice';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import PouchDB from 'pouchdb-react-native';
+
 
 
 const App = () => {
