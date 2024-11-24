@@ -1,36 +1,32 @@
-import { View, Text, StatusBar, TouchableOpacity, Platform, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Platform, Image } from 'react-native'
 import React, { useState } from 'react'
 import '../global.css'
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeValue } from '@/fetures/welcomeSlice';
+import { router } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+
 
 const App = () => {
     const [slide, setSlide] = useState(0);
     const [hideSlides, setHideSlides] = useState(false);
     const translateX = useSharedValue(0);
     const opacity = useSharedValue(1);
-const theme = "";
 
-    const titles = ['Welcome to Hire Me', 'Find the Best Employee', 'Sell Your Knowledge'];
-    const descriptions = [
-        "Your go-to platform for hiring the best talent quickly and easily. Explore a variety of options to find the right employee for your needs.",
-        "Discover a wide range of skilled professionals ready to help you grow your business. From developers to designers, we have the perfect candidates for every role.",
-        "Share your expertise and earn by offering your skills to those who need them. Whether you're a consultant, freelancer, or expert in your field, start making an impact and income."
-    ];
-    const images = [
-        require('@/assets/images/welcome-1.png'),
-        require('@/assets/images/welcome-2.png'),
-        require('@/assets/images/welcome-3.png')
-    ];
+    const values = useSelector((state: any) => state.values.values);
+    const dispatch = useDispatch();
+
 
 
     const fadeIn = () => {
         setTimeout(() => {
-            opacity.value = withTiming(1, { duration: 500 });
-        }, 500);
+            opacity.value = withTiming(1, { duration: 700 });
+        }, 700);
     };
 
     const fadeOut = () => {
-        opacity.value = withTiming(0, { duration: 250 });
+        opacity.value = withTiming(0, { duration: 350 });
     };
 
     const fadeAnimatedStyle = useAnimatedStyle(() => ({
@@ -40,17 +36,21 @@ const theme = "";
     const click = (index?: any) => {
         translateX.value = -800;
         setTimeout(() => {
-            translateX.value = 800;
             setHideSlides(true);
+            translateX.value = 800;
         }, 300);
         setTimeout(() => {
-            translateX.value = 0;
             if (index != undefined) {
                 setSlide(index)
-            } else {
-                setSlide((prev) => (prev + 1) % titles.length)
+            }
+            else if(slide != (values.length-1)) {
+                setSlide((prev) => (prev + 1) % values.length)
+            }
+            else{
+                router.replace('/auth');
             }
             setHideSlides(false);
+            translateX.value = 0;
         }, 600);
     };
 
@@ -59,7 +59,7 @@ const theme = "";
     }));
 
     const renderDots = () => (
-        titles.map((_, index) => (
+        values.map((_: any, index: any) => (
             <TouchableOpacity
                 key={index}
                 onPress={() => { click(index) }}
@@ -70,11 +70,12 @@ const theme = "";
 
     return (
         <View className={`flex-1 items-center bg-[#ebebeb]`} >
+            <StatusBar style="dark" />
             <View className={`h-[55%] w-full bg-[#22826aac] overflow-hidden justify-center items-center`}>
                 {!hideSlides && (
                     <Animated.Image
-                        style={[animatedStyle,{height:'100%',width:'100%',}]}
-                        source={images[slide]}
+                        style={[animatedStyle, { height: '100%', width: '100%', }]}
+                        source={values[slide].image}
                         resizeMode='contain'
                         className="flex-1 items-center justify-center"
                     />
@@ -84,12 +85,12 @@ const theme = "";
                 <View className="flex items-center w-full mt-3 flex-row justify-center gap-x-3">
                     {renderDots()}
                 </View>
-                <Animated.View style={[fadeAnimatedStyle,{width:Platform.OS=='web'?'95%':undefined}]} className="flex w-11/12 items-center">
+                <Animated.View style={[fadeAnimatedStyle, { width: Platform.OS == 'web' ? '95%' : undefined }]} className="flex w-11/12 items-center">
                     <Text className={`font-bold text-base text-center`}>
-                        {titles[slide]}
+                        {values[slide].title}
                     </Text>
                     <Text className={`text-xs opacity-40 text-center`}>
-                        {descriptions[slide]}
+                        {values[slide].description}
                     </Text>
                 </Animated.View>
 
@@ -105,11 +106,11 @@ const theme = "";
                         <Text className={`text-white font-bold text-base`}>Next</Text>
                     </TouchableOpacity>
                     {
-                        slide != images.length-1 ? (
-                            <TouchableOpacity className="w-11/12 h-11 rounded-lg justify-center items-center">
+                        slide != values.length - 1 ? (
+                            <TouchableOpacity onPress={() => { router.replace('/auth'); }} className="w-11/12 h-11 rounded-lg justify-center items-center">
                                 <Text className={`font-bold opacity-40 text-black`}>Skip</Text>
                             </TouchableOpacity>
-                        ):(
+                        ) : (
                             <View className={`w-11/12 h-11 rounded-lg justify-center items-center`}></View>
                         )
                     }
